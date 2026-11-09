@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Log in | {{ site.name }}{% endblock %}
+{% block content %}
+<div class="narrow">
+  <h1>Log in</h1>
+  {% if throttled %}<p class="alert alert-error" role="alert">Too many failed attempts. Wait 15 minutes, then try again.</p>{% endif %}
+  <form method="post" class="form-box">
+    {% csrf_token %}
+    {% include "blog/_form_fields.html" %}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="btn">Log in</button>
+  </form>
+  <p>New here? <a href="{% url 'register' %}">Create an account</a>.</p>
+</div>
+{% endblock %}

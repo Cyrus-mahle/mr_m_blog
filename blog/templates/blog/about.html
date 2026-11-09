@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}About | {{ site.name }}{% endblock %}
+{% block content %}
+<div class="narrow prose">
+  <h1>About {{ site.name }}</h1>
+  <p class="lead">{{ site.tagline }}</p>
+  <p>{{ site.name }} was founded by {{ site.founder }}. This blog shares what it takes to build software properly: clear code, honest testing and security that is never an afterthought.</p>
+
+  <h2>Our five rules</h2>
+  <ol>
+    <li><strong>Security comes first.</strong> It outranks speed, features and deadlines.</li>
+    <li><strong>Understand every line.</strong> If you cannot explain it, do not ship it.</li>
+    <li><strong>Never trust user input.</strong> Validate it on the server, every time.</li>
+    <li><strong>Test your code.</strong> Then test it again before you share it.</li>
+    <li><strong>Keep learning.</strong> Read the official documentation. It is the best teacher.</li>
+  </ol>
+
+  <h2>Who is behind it</h2>
+  <ul>
+    <li>Founder: {{ site.founder }}</li>
+    <li>Author: {{ site.author }}</li>
+    <li>Developer: {{ site.developer }}, {{ site.developer_title }}</li>
+  </ul>
+
+  <h2>Write here</h2>
+  <p><a href="{% url 'register' %}">Create a free account</a> to publish your own posts. You can edit or delete your posts at any time, and so can the administrator.</p>
+</div>
+{% endblock %}

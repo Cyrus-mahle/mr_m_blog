@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}My posts | {{ site.name }}{% endblock %}
+{% block content %}
+<div class="title-row">
+  <h1>My posts</h1>
+  <a class="btn" href="{% url 'post_create' %}">Write a post</a>
+</div>
+{% for post in page_obj %}
+  <article class="post-item row">
+    <div>
+      <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+      <p class="meta">{{ post.created|date:"j F Y" }}</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-small" href="{% url 'post_edit' post.pk %}">Edit</a>
+      <form method="post" action="{% url 'post_delete' post.pk %}" class="inline-form" data-confirm="Delete this post? This cannot be undone.">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-small btn-danger">Delete</button>
+      </form>
+    </div>
+  </article>
+{% empty %}
+  <p>You have not written a post yet. <a href="{% url 'post_create' %}">Write your first post</a>.</p>
+{% endfor %}
+{% if page_obj.has_other_pages %}
+<nav class="pager" aria-label="Pages">
+  {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">Newer</a>{% else %}<span></span>{% endif %}
+  <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+  {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Older</a>{% else %}<span></span>{% endif %}
+</nav>
+{% endif %}
+{% endblock %}

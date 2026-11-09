@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Register | {{ site.name }}{% endblock %}
+{% block content %}
+<div class="narrow">
+  <h1>Create your account</h1>
+  <form method="post" class="form-box">
+    {% csrf_token %}
+    {% include "blog/_form_fields.html" %}
+    <p class="help">Read the <a href="{% url 'terms' %}">Terms and privacy</a> first.</p>
+    <button type="submit" class="btn">Create account</button>
+  </form>
+  <p>Already registered? <a href="{% url 'login' %}">Log in</a>.</p>
+</div>
+{% endblock %}

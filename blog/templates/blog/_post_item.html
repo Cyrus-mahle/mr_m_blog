@@ -1,0 +1,6 @@
+{% load blog_extras %}
+<article class="post-item">
+  <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+  <p class="meta">By {{ post.author_name }}. {{ post.created|date:"j F Y" }}</p>
+  <p>{{ post.content|excerpt:35 }}</p>
+</article>

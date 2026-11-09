@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load blog_extras %}
+{% block title %}{{ post.title }} | {{ site.name }}{% endblock %}
+{% block content %}
+<article class="narrow prose">
+  <h1>{{ post.title }}</h1>
+  <p class="meta">By {{ post.author_name }}. {{ post.created|date:"j F Y" }}{% if post.was_edited %}. Updated {{ post.updated|date:"j F Y" }}{% endif %}</p>
+
+  {{ post.content|format_post }}
+
+  {% if can_manage %}
+  <div class="actions">
+    <a class="btn btn-small" href="{% url 'post_edit' post.pk %}">Edit post</a>
+    <form method="post" action="{% url 'post_delete' post.pk %}" class="inline-form" data-confirm="Delete this post? This cannot be undone.">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-small btn-danger">Delete post</button>
+    </form>
+  </div>
+  {% endif %}
+</article>
+<p class="narrow"><a href="{% url 'blog_list' %}">Back to all posts</a></p>
+{% endblock %}

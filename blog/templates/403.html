@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Not allowed | {{ site.name }}{% endblock %}
+{% block content %}
+<div class="narrow"><h1>You cannot do that</h1><p>Only the author or the administrator can change this post. <a href="{% url 'blog_list' %}">Back to the blog</a>.</p></div>
+{% endblock %}

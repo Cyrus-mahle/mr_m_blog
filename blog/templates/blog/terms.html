@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Terms and privacy | {{ site.name }}{% endblock %}
+{% block content %}
+<div class="narrow prose">
+  <h1>Terms of Use and Privacy Policy</h1>
+  <p class="meta">Last updated: 9 November 2026</p>
+
+  <h2>Using this site</h2>
+  <p>Anyone may read the blog. You need an account to write posts. You are responsible for what you publish. Do not post unlawful, abusive or misleading content, and do not post anyone's private information. The administrator may remove posts that break these rules.</p>
+
+  <h2>Your account and security</h2>
+  <p>Choose a strong password and keep it private. We store passwords hashed, so nobody at {{ site.name }} can read them. We limit login attempts to protect your account.</p>
+
+  <h2>Your posts</h2>
+  <p>You keep ownership of your posts. You can edit or delete them at any time. The administrator can edit or delete any post.</p>
+
+  <h2>What we store</h2>
+  <ul>
+    <li>Your username, email address and hashed password.</li>
+    <li>The posts you write.</li>
+    <li>Messages you send through the Contact page.</li>
+  </ul>
+
+  <h2>Cookies and tracking</h2>
+  <p>We use only the cookies needed to keep you logged in and to protect forms. We do not use advertising or tracking cookies.</p>
+
+  <h2>Questions</h2>
+  <p>Use the <a href="{% url 'contact' %}">Contact page</a>. The full document is also available as a <a href="{% static 'documents/Terms_of_Use_and_Privacy_Policy.pdf' %}">PDF</a>.</p>
+</div>
+{% endblock %}
