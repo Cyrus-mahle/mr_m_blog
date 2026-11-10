@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Contact | {{ site.name }}{% endblock %}
+{% block content %}
+<div class="narrow">
+  <h1>Contact</h1>
+  <p>Have a question, or an idea for a post? Send a message to {{ site.founder }}.</p>
+  <form method="post" class="form-box">
+    {% csrf_token %}
+    {% include "blog/_form_fields.html" %}
+    <button type="submit" class="btn">Send message</button>
+  </form>
+</div>
+{% endblock %}
